@@ -7,6 +7,8 @@ const mock =        [ {id: 1, username : "anson", password : "yahiaahmed123456"}
 
 
 const PORT = process.env.PORT || 3000
+app.use(express.text());
+
 
 app.listen(PORT, () => {
     console.log(`Running port ${PORT}`);
@@ -14,11 +16,12 @@ app.listen(PORT, () => {
 })
 
 
-app.get("/", (request, response) => {
+app.post("/", (request, response) => {
 
+    const string = request.body;
+    console.log('Received body:', requestBody);
     
-
-   response.send("hello world")
+    
 
 })
 
@@ -35,6 +38,7 @@ app.get("/api/users" , (req,res) => {
     if(filter && value) return res.send( mock.filter((user) => user[filter].includes(value)))
         return res.send(mock)
 });
+
 
 
 
